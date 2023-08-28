@@ -8,7 +8,7 @@ API_KEY = '969defe4841750d470f3e909b6eddfef'
 url = f'http://api.openweathermap.org/data/2.5/weather'
 
 # Define the city name for which you want to fetch weather
-city_name = 'London'
+city_name = 'New York'
 
 # Define query parameters
 params = {
