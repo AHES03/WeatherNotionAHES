@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/api/weather", "dest": "api/weatherAPI.py" }
+  ]
+}
