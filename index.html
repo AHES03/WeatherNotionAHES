@@ -1,13 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Report</title>
+</head>
+<body>
+    <h1>Weather Report</h1>
+    <form id="cityForm">
+        <label for="cityName">Enter City Name:</label>
+        <input type="text" id="cityName" name="cityName">
+        <button type="submit">Get Weather</button>
+    </form>
+    <div id="weatherData"></div>
 
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Weather Report</title>
-        </head>
-        <body>
-            <h1>Weather Report for London</h1>
-            <p>Temperature: 17.64°C</p>
-            <p>Weather Description: broken clouds</p>
-        </body>
-        </html>
-        
+    <script>
+        document.getElementById('cityForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const cityName = document.getElementById('cityName').value;
+            fetch(`/api/weather?cityName=${cityName}`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherData = `
+                        <p>City: ${data.city}</p>
+                        <p>Temperature: ${data.temperature}°C</p>
+                        <p>Weather Description: ${data.weatherDescription}</p>
+                    `;
+                    document.getElementById('weatherData').innerHTML = weatherData;
+                });
+        });
+    </script>
+</body>
+</html>
